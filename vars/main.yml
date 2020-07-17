@@ -4,11 +4,13 @@ _certbot_packages:
   default:
     - certbot
     - python3-certbot-apache
+  Alpine:
+    - certbot
   RedHat-7
     - certbot
     - python2-certbot-apache
 
-certbot_packages: "{{ _certbot_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages['default']) }}"
+certbot_packages: "{{ _certbot_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages[ansible_os_family] | default(_certbot_packages['default'])) }}"
 
 _certbot_system_to_restart:
   apache:
