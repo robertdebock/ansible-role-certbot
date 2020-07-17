@@ -1,0 +1,25 @@
+---
+# tasks file for certbot
+- name: include assert.yml
+  include_tasks: assert.yml
+
+- name: install certbot
+  package:
+    name: "{{ certbot_packages }}"
+    state: present
+
+- name: get and install certificates
+  command: certbot --noninteractive --{{ certbot_system }} --domain "{{ certbot_domains | join(' --domain') }}" --agree-tos --email {{ certbot_email }}
+  args:
+    creates: /etc/letsencrypt/accounts
+  when:
+    - certbot_ci_mode is not defined
+
+- name: set up automatic renewal
+  cron:
+    name: certbot
+    minute: "0"
+    hour: "0,12"
+    job: sleep $(($RANDOM%3600)) && certbot renew -q 
+  notify:
+    - restart {{ certbot_system_to_restart }}

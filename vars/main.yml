@@ -1,0 +1,11 @@
+---
+# vars file for certbot
+certbot_packages:
+  - certbot
+  - python3-certbot-apache
+
+_certbot_system_to_restart:
+  apache: httpd
+  haproxy: haproxy
+
+certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system] }}"

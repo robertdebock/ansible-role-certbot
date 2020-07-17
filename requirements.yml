@@ -1,0 +1,9 @@
+---
+- robertdebock.bootstrap
+- robertdebock.buildtools
+- robertdebock.cron
+- robertdebock.epel
+- robertdebock.httpd
+- robertdebock.openssl
+- robertdebock.python_pip
+- robertdebock.selinux

@@ -1,0 +1,55 @@
+---
+- name: test if certbot_system is set correctly
+  assert:
+    that:
+      - certbot_system is defined
+      - certbot_system | length > 0
+      - certbot_system in ["apache", "nginx"]
+    quiet: yes
+
+- name: test if certbot_domains is set correctly
+  assert:
+    that:
+      - certbot_domains is defined
+      - certbot_domains | length > 0
+      - certbot_domains is iterable
+    quiet: yes
+
+- name: test if item in certbot_domains is set correctly
+  assert:
+    that:
+      - item is defined
+      - item | length > 0
+      - '"." in item'
+    quiet: yes
+  loop: "{{ certbot_domains }}"
+
+- name: test if certbot_email is set correctly
+  assert:
+    that:
+      - certbot_email is defined
+      - certbot_email | length > 0
+    quiet: yes
+
+# - name: test if certbot_X is set correctly
+#   assert:
+#     that:
+#       - certbot_X is defined
+#       - certbot_X | length > 0
+#       - certbot_X is iterable
+#       - certbot_X | int
+#       - certbot_X | int >= 0
+#       - certbot_X | type_debug == "bool"
+#       - certbot_X in ["a", "b"]
+#     quiet: yes
+# - name: test if certbot_X is set correctly
+#   assert:
+#     that:
+#       - certbot_X is defined
+#       - certbot_X | length > 0
+#       - certbot_X is iterable
+#       - certbot_X | int
+#       - certbot_X | int >= 0
+#       - certbot_X | type_debug == "bool"
+#       - certbot_X in ["a", "b"]
+#     quiet: yes
