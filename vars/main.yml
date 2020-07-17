@@ -5,7 +5,13 @@ certbot_packages:
   - python3-certbot-apache
 
 _certbot_system_to_restart:
-  apache: httpd
-  haproxy: haproxy
+  apache:
+    default: httpd
+    Alpine: apache2
+    Debian: apache2
+    Suse: apache2
+    RedHat: httpd
+  haproxy:
+    default: haproxy
 
-certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system] }}"
+certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system][ansible_os_family] | default(_certbot_system_to_restart[certbot_system]['default']) }}"
