@@ -22,4 +22,4 @@
     hour: "0,12"
     job: sleep $(($RANDOM%3600)) && certbot renew -q 
   notify:
-    - restart {{ certbot_system_to_restart }}
+    - restart certbot_system
