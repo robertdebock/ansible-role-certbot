@@ -1,16 +1,21 @@
 ---
 # vars file for certbot
-_certbot_packages:
-  default:
-    - certbot
-    - python3-certbot-apache
-  Alpine:
-    - certbot
-  RedHat-7
-    - certbot
-    - python2-certbot-apache
+certbot_package:
+  - certbot
 
-certbot_packages: "{{ _certbot_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages[ansible_os_family] | default(_certbot_packages['default'])) }}"
+_certbot_packages:
+  apache:
+    default:
+      - python3-certbot-apache
+    RedHat-7
+      - python2-certbot-apache
+  haproxy:
+    default: []
+  nginx:
+    default:
+      - certbot-nginx
+
+certbot_packages: "{{ _certbot_packages[certbot_system][ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages['default']) + certbot_package }}"
 
 _certbot_system_to_restart:
   apache:
@@ -19,6 +24,8 @@ _certbot_system_to_restart:
     Debian: apache2
     Suse: apache2
     RedHat: httpd
+  nginx:
+    default: nginx
   haproxy:
     default: haproxy
 
