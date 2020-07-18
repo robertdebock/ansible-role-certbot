@@ -16,7 +16,7 @@ _certbot_packages:
     default:
       - certbot-nginx
 
-certbot_packages: "{{ _certbot_packages[certbot_system][ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages[certbot_system]['default']) + certbot_package }}"
+certbot_packages: "{{ _certbot_packages[certbot_system][ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_certbot_packages[certbot_system][ansible_os_family] | default(_certbot_packages[certbot_system]['default'])) + certbot_package }}"
 
 _certbot_system_to_restart:
   apache:
