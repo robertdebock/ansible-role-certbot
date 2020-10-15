@@ -5,3 +5,4 @@
 repository:
   description: Install and configure certbot on your system.
   homepage: https://robertdebock.nl/
+  topics: certbot, acme, letsencrypt, ansible, molecule, tox, playbook, hacktoberfest
