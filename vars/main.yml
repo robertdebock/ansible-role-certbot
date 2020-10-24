@@ -8,7 +8,7 @@ _certbot_packages:
     default:
       - python3-certbot-apache
     Alpine:
-      - certbot-apache 
+      - certbot-apache
     RedHat-7:
       - python2-certbot-apache
   haproxy:
@@ -17,7 +17,7 @@ _certbot_packages:
     default:
       - python3-certbot-nginx
     Alpine:
-      - certbot-nginx      
+      - certbot-nginx
     RedHat-7:
       - python2-certbot-nginx
 
