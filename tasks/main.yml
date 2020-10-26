@@ -10,7 +10,13 @@
     state: present
 
 - name: get and install certificates
-  command: certbot --noninteractive --{{ certbot_system }} --domain "{{ certbot_domains | join(' --domain') }}" --agree-tos --email {{ certbot_email }}
+  command: |
+    certbot --noninteractive
+    --{{ certbot_system }}
+    --domain {{ certbot_domains | join(' --domain ') }}
+    --agree-tos
+    --email {{ certbot_email }}
+    --no-redirect
   args:
     creates: /etc/letsencrypt/accounts
   when:
