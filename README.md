@@ -115,7 +115,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |alpine|all|
 |el|7, 8|
 |debian|buster, bullseye|
-|fedora|31, 32|
+|fedora|all|
 |opensuse|all|
 |ubuntu|focal, bionic|
 
@@ -165,6 +165,11 @@ image="debian" tag="stable" tox
 
 Apache-2.0
 
+## [Contributors](#contributors)
+
+I'd like to thank everybody that made contributions to this repository. It motivates me, improves the code and is just fun to collaborate.
+
+- [justin-p](https://github.com/justin-p)
 
 ## [Author Information](#author-information)
 
