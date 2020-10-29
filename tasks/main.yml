@@ -27,6 +27,6 @@
     name: certbot
     minute: "0"
     hour: "0,12"
-    job: sleep $(($RANDOM%3600)) && certbot renew -q
+    job: "{{ certbot_sleep_command }} $(($RANDOM%3600)) && /usr/bin/certbot renew -q"
   notify:
     - restart certbot_system
