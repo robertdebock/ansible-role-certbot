@@ -45,7 +45,7 @@ The machine needs to be prepared in CI this is done using `molecule/resources/pr
     - role: robertdebock.selinux
     - role: robertdebock.httpd
 ```
-```
+
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
