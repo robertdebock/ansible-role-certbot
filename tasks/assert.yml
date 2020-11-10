@@ -4,7 +4,7 @@
     that:
       - certbot_system is defined
       - certbot_system | length > 0
-      - certbot_system in ["apache", "nginx", "haproxy"]
+      - certbot_system in [ "apache", "nginx", "haproxy" ]
     quiet: yes
 
 - name: test if certbot_domains is set correctly
