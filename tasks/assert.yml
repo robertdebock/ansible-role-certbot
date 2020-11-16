@@ -3,7 +3,6 @@
   assert:
     that:
       - certbot_system is defined
-      - certbot_system | length > 0
       - certbot_system in [ "apache", "nginx", "haproxy" ]
     quiet: yes
 
@@ -11,7 +10,6 @@
   assert:
     that:
       - certbot_domains is defined
-      - certbot_domains | length > 0
       - certbot_domains is iterable
     quiet: yes
 
@@ -19,7 +17,6 @@
   assert:
     that:
       - item is defined
-      - item | length > 0
       - '"." in item'
     quiet: yes
   loop: "{{ certbot_domains }}"
@@ -28,5 +25,4 @@
   assert:
     that:
       - certbot_email is defined
-      - certbot_email | length > 0
     quiet: yes
