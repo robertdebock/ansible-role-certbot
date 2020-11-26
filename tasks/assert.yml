@@ -1,4 +1,5 @@
 ---
+
 - name: test if certbot_system is set correctly
   assert:
     that:
