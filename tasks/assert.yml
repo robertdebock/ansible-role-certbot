@@ -4,6 +4,7 @@
   assert:
     that:
       - certbot_system is defined
+      - certbot_system is string
       - certbot_system in [ "apache", "nginx", "haproxy" ]
     quiet: yes
 
@@ -18,6 +19,7 @@
   assert:
     that:
       - item is defined
+      - item is string
       - '"." in item'
     quiet: yes
   loop: "{{ certbot_domains }}"
@@ -26,4 +28,5 @@
   assert:
     that:
       - certbot_email is defined
+      - certbot_email is string
     quiet: yes
