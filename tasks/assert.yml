@@ -1,7 +1,7 @@
 ---
 
 - name: test if certbot_system is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - certbot_system is defined
       - certbot_system is string
@@ -9,14 +9,14 @@
     quiet: yes
 
 - name: test if certbot_domains is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - certbot_domains is defined
       - certbot_domains is iterable
     quiet: yes
 
 - name: test if item in certbot_domains is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - item is defined
       - item is string
@@ -25,7 +25,7 @@
   loop: "{{ certbot_domains }}"
 
 - name: test if certbot_email is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - certbot_email is defined
       - certbot_email is string
