@@ -12,7 +12,7 @@
     state: present
 
 - name: get and install certificates
-  command: |
+  ansible.builtin.command: |
     certbot --noninteractive
     --{{ certbot_system }}
     --domain {{ certbot_domains | join(' --domain ') }}
