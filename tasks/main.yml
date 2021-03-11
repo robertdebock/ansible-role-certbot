@@ -11,7 +11,20 @@
     name: "{{ certbot_packages }}"
     state: present
 
-- name: get and install certificates
+- name: get and install certificates (Standalone)
+  ansible.builtin.command: |
+    certbot certonly --noninteractive
+    --{{ certbot_system }}
+    --domain {{ certbot_domains | join(' --domain ') }}
+    --agree-tos
+    --email {{ certbot_email }}
+  args:
+    creates: /etc/letsencrypt/accounts
+  when:
+    - certbot_ci_mode is not defined
+    - certbot_system == "standalone"
+
+- name: get and install certificates (Managed)
   ansible.builtin.command: |
     certbot --noninteractive
     --{{ certbot_system }}
@@ -23,6 +36,7 @@
     creates: /etc/letsencrypt/accounts
   when:
     - certbot_ci_mode is not defined
+    - certbot_system != "standalone"
 
 - name: set up automatic renewal
   ansible.builtin.cron:
