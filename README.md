@@ -55,7 +55,7 @@ These variables are set in `defaults/main.yml`:
 ---
 # defaults file for certbot
 
-# The certbot can configure either "apache", "haproxy" or "nginx".
+# The certbot can configure either "apache", "haproxy", "nginx" or run "standalone".
 certbot_system: apache
 
 # You can have multiple domains, as a list to request a certificate for.
