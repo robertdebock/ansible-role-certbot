@@ -40,10 +40,3 @@ _certbot_system_to_restart:
     default: []
 
 certbot_system_to_restart: "{{ _certbot_system_to_restart[certbot_system][ansible_os_family] | default(_certbot_system_to_restart[certbot_system]['default']) }}"
-
-_certbot_sleep_command:
-  default: /usr/bin/sleep
-  Alpine: /bin/sleep
-  Debian: /bin/sleep
-
-certbot_sleep_command: "{{ _certbot_sleep_command[ansible_os_family] | default(_certbot_sleep_command['default']) }}"  # noqa 204 Just long.
