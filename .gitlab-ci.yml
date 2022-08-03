@@ -27,8 +27,6 @@ molecule:
         tag: "35"
       - image: "fedora"
         tag: "latest"
-      - image: "fedora"
-        tag: "rawhide"
       - image: "opensuse"
         tag: "latest"
       - image: "ubuntu"
