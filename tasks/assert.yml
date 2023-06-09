@@ -29,4 +29,5 @@
     that:
       - certbot_email is defined
       - certbot_email is string
+      - certbot_email is not none
     quiet: yes
