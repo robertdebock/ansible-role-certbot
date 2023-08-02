@@ -19,7 +19,6 @@
       --domain {{ certbot_domains | join(',') }}
       --agree-tos
       --email {{ certbot_email }}
-    creates: /etc/letsencrypt/accounts
   when:
     - certbot_ci_mode is not defined
     - certbot_system == "standalone"
@@ -33,7 +32,6 @@
       --agree-tos
       --email {{ certbot_email }}
       --no-redirect
-    creates: /etc/letsencrypt/accounts
   when:
     - certbot_ci_mode is not defined
     - certbot_system != "standalone"
