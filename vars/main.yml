@@ -2,6 +2,7 @@
 # vars file for certbot
 certbot_package:
   - certbot
+  - cron
 
 _certbot_packages:
   apache:
