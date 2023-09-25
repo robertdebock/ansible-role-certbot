@@ -17,7 +17,7 @@
     cmd: |
       certbot certonly --noninteractive
       --{{ certbot_system }}
-      --domain {{ item  }}
+      --domain {{ item }}
       --agree-tos
       --email {{ certbot_email }}
     creates: "/etc/letsencrypt/live/{{ item }}"
@@ -31,7 +31,7 @@
     cmd: |
       certbot --noninteractive
       --{{ certbot_system }}
-      --domain {{ item  }}
+      --domain {{ item }}
       --agree-tos
       --email {{ certbot_email }}
       --no-redirect
