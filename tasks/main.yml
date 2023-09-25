@@ -17,10 +17,11 @@
     cmd: |
       certbot certonly --noninteractive
       --{{ certbot_system }}
-      --domain {{ certbot_domains | join(',') }}
+      --domain {{ item  }}
       --agree-tos
       --email {{ certbot_email }}
-    creates: /etc/letsencrypt/accounts
+    creates: "/etc/letsencrypt/live/{{ item }}"
+  loop: "{{ certbot_domains }}"
   when:
     - certbot_ci_mode is not defined
     - certbot_system == "standalone"
@@ -30,11 +31,12 @@
     cmd: |
       certbot --noninteractive
       --{{ certbot_system }}
-      --domain {{ certbot_domains | join(',') }}
+      --domain {{ item  }}
       --agree-tos
       --email {{ certbot_email }}
       --no-redirect
-    creates: /etc/letsencrypt/accounts
+    creates: "/etc/letsencrypt/live/{{ item }}"
+  loop: "{{ certbot_domains }}"
   when:
     - certbot_ci_mode is not defined
     - certbot_system != "standalone"
