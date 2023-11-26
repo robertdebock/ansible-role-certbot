@@ -1,4 +1,4 @@
-# Ansible role [certbot](#certbot)
+# [Ansible role certbot](#certbot)
 
 Install and configure certbot on your system.
 
