@@ -18,7 +18,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
   gather_facts: true
 
   roles:
-    - role: robertdebock.certbot
+    - role: ansible-role-certbot
       certbot_email: robert@meinit.nl
       certbot_domains:
         - meinit.nl
