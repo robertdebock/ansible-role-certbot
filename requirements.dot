@@ -1,0 +1,23 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "certbot" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.buildtools" [fillcolor=green style=filled]
+    "robertdebock.cron" [fillcolor=green style=filled]
+    "robertdebock.epel" [fillcolor=green style=filled]
+    "robertdebock.httpd" [fillcolor=green style=filled]
+    "robertdebock.openssl" [fillcolor=green style=filled]
+    "robertdebock.python_pip" [fillcolor=green style=filled]
+    "robertdebock.selinux" [fillcolor=green style=filled]
+  }
+  "certbot" -> "robertdebock.bootstrap"
+  "certbot" -> "robertdebock.buildtools"
+  "certbot" -> "robertdebock.cron"
+  "certbot" -> "robertdebock.epel"
+  "certbot" -> "robertdebock.httpd"
+  "certbot" -> "robertdebock.openssl"
+  "certbot" -> "robertdebock.python_pip"
+  "certbot" -> "robertdebock.selinux"
+}
