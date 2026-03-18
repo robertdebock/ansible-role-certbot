@@ -44,7 +44,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     - role: robertdebock.openssl
       openssl_items:
         - name: apache-httpd
-          common_name: "{{ ansible_fqdn }}"
+          common_name: "{{ ansible_facts['fqdn'] }}"
     - role: robertdebock.selinux
     - role: robertdebock.httpd
 ```
@@ -64,7 +64,7 @@ certbot_system: apache
 
 # You can have multiple domains, as a list to request a certificate for.
 certbot_domains:
-  - "{{ ansible_fqdn }}"
+  - "{{ ansible_facts['fqdn'] }}"
 
 # An email-addres is required to register.
 certbot_email: your_email_address@example.com
